@@ -29,7 +29,9 @@ Dispositivo >> conectarCon: unaConexion [
 
 { #category : #'as yet unclassified' }
 Dispositivo >> configurarCRC: unCRCcalculator [
-	crsCalculator := unCRCcalculator 
+	self display showBanner: 'Configurando CRC'.
+	crsCalculator := unCRCcalculator. self display
+		showBanner: 'CRC configurado'
 ]
 
 { #category : #accessing }
