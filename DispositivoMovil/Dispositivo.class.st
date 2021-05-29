@@ -18,11 +18,12 @@ Dispositivo >> CRC [
 { #category : #accessing }
 Dispositivo >> conectarCon: unaConexion [
 	| showBan |
+	self display
+		showBanner: 'Dispositivo: Conectando por ' , unaConexion logo.
 	connection := unaConexion.
 	showBan := unaConexion connect.
-	self display showBanner: showBan.
+	self display showBanner: 'Simbolo: ' , showBan.
 	self ringer ring.
-	
 	^ showBan
 ]
 
@@ -45,6 +46,7 @@ Dispositivo >> display [
 Dispositivo >> initialize [
 	ringer := Ringer new.
 	display := DisplayDispositivo new.
+	crsCalculator:= CRC32_Calculator new.
 ]
 
 { #category : #accessing }
@@ -55,6 +57,9 @@ Dispositivo >> ringer [
 { #category : #commands }
 Dispositivo >> send: datos [
 	| crc |
+	self display showBanner: 'Calculando la redundancia de ', datos.
 	crc := crsCalculator crcFor: datos.
-	self connection sendData: datos crc: crc
+	self display showBanner: 'Datos asegurados, enviando .....'.
+	self display showBanner: (self connection sendData: datos crc: crc)
+	
 ]

@@ -9,15 +9,20 @@ Class {
 
 { #category : #ssl }
 WifiConn >> connect [
-	^ pict
+	^ self logo
 ]
 
 { #category : #initialization }
-WifiConn >> initialize [ 
-	pict:= 'Conectado por WiFi'
+WifiConn >> initialize [
+	pict := 'WiFi'
 ]
 
 { #category : #'as yet unclassified' }
-WifiConn >> sendData: data crc: crc [ 
-	Transcript show:' Connecion de -- WIFI -- realizada '; cr.
+WifiConn >> logo [
+	^ pict
+]
+
+{ #category : #'as yet unclassified' }
+WifiConn >> sendData: data crc: crc [
+	^ ' Datos enviados por wifi '
 ]

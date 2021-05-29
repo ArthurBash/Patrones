@@ -9,15 +9,20 @@ Class {
 
 { #category : #ssl }
 CuatroGConnection >> connect [
-	^ symb
+	^ self logo
 ]
 
 { #category : #initialization }
-CuatroGConnection >> initialize [ 
-	symb := 'Conectado por 4G'
+CuatroGConnection >> initialize [
+	symb := ' 4G'
+]
+
+{ #category : #'as yet unclassified' }
+CuatroGConnection >> logo [
+	^ symb
 ]
 
 { #category : #'as yet unclassified' }
 CuatroGConnection >> transmit: data crc: crc [
-	Transcript show:' Connecion de -- 4G -- realizada '; cr.
+	^ ' Datos enviados por 4G  '
 ]

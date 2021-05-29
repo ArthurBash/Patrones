@@ -28,6 +28,11 @@ Adapter4GConnection >> initialize [
 ]
 
 { #category : #'as yet unclassified' }
-Adapter4GConnection >> sendData: data crc: crc [ 
-	cuatroGConnect  transmit: data crc: crc
+Adapter4GConnection >> logo [
+	^ cuatroGConnect logo
+]
+
+{ #category : #'as yet unclassified' }
+Adapter4GConnection >> sendData: data crc: crc [
+	^ cuatroGConnect transmit: data crc: crc
 ]
