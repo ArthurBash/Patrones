@@ -1,6 +1,6 @@
 Class {
 	#name : #WifiConn,
-	#superclass : #StrategyConnection,
+	#superclass : #Connection,
 	#instVars : [
 		'pict'
 	],
@@ -10,6 +10,11 @@ Class {
 { #category : #ssl }
 WifiConn >> connect [
 	^ pict
+]
+
+{ #category : #initialization }
+WifiConn >> initialize [ 
+	pict:= 'Conectado por WiFi'
 ]
 
 { #category : #'as yet unclassified' }

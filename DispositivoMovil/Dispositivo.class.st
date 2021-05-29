@@ -10,11 +10,25 @@ Class {
 	#category : #DispositivoMovil
 }
 
+{ #category : #'as yet unclassified' }
+Dispositivo >> CRC [ 
+	^ crsCalculator
+]
+
 { #category : #accessing }
-Dispositivo >> connectarCon: unaConexion [
+Dispositivo >> conectarCon: unaConexion [
+	| showBan |
 	connection := unaConexion.
-	self display showBanner: unaConexion connect.
-	self ringer ring
+	showBan := unaConexion connect.
+	self display showBanner: showBan.
+	self ringer ring.
+	
+	^ showBan
+]
+
+{ #category : #'as yet unclassified' }
+Dispositivo >> configurarCRC: unCRCcalculator [
+	crsCalculator := unCRCcalculator 
 ]
 
 { #category : #accessing }
@@ -40,8 +54,6 @@ Dispositivo >> ringer [
 
 { #category : #commands }
 Dispositivo >> send: datos [
-	""
-
 	| crc |
 	crc := crsCalculator crcFor: datos.
 	self connection sendData: datos crc: crc

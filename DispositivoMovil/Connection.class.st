@@ -1,9 +1,6 @@
 Class {
 	#name : #Connection,
 	#superclass : #Object,
-	#instVars : [
-		'strategy'
-	],
 	#classInstVars : [
 		'aStrategy',
 		'strategy'
@@ -12,16 +9,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Connection >> sendData: data crc: crc [ 
-	strategy sendData: data crc: crc. 
+Connection >> connect [
+	self subclassResponsibility
 ]
 
-{ #category : #accessing }
-Connection >> strategy [ 	
-	^ strategy 
-]
-
-{ #category : #accessing }
-Connection >> strategy: aStrategy [
-	strategy := aStrategy 
+{ #category : #'as yet unclassified' }
+Connection >> sendData: data crc: crc [
+	self subclassResponsibility 
 ]

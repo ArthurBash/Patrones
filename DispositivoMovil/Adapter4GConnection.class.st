@@ -1,6 +1,6 @@
 Class {
 	#name : #Adapter4GConnection,
-	#superclass : #StrategyConnection,
+	#superclass : #Connection,
 	#instVars : [
 		'cuatroGConnect'
 	],
@@ -9,12 +9,17 @@ Class {
 
 { #category : #ssl }
 Adapter4GConnection >> connect [
-	self cuatroGConnect connect
+	^ self cuatroGConnect connect
 ]
 
 { #category : #accessing }
 Adapter4GConnection >> cuatroGConnect [
 	^ cuatroGConnect 
+]
+
+{ #category : #'as yet unclassified' }
+Adapter4GConnection >> devolverSimbolo [
+ 	^ self cuatroGConnect devolverSimbolo 
 ]
 
 { #category : #initialization }
