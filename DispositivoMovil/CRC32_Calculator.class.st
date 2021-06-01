@@ -6,7 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 CRC32_Calculator >> crcFor: datos [
-	" retorna el crc16 para el string 'message' "
+	"Retorna el CRC32 para el string datos"
 
 	^ CRC crc32FromCollection: datos
 ]

@@ -19,12 +19,12 @@ DispositivoTest >> testConectarCon [
 	wifiCon := WifiConn new.
 	self
 		assert: (dispositivo conectarCon: wifiCon)
-		equals: wifiCon connect.
+		equals: wifiCon logo.
 	self assert: dispositivo connection equals: wifiCon.
-		cuatroGCon := Adapter4GConnection new.
+	cuatroGCon := Adapter4GConnection new.
 	self
 		assert: (dispositivo conectarCon: cuatroGCon)
-		equals: cuatroGCon connect.
+		equals: cuatroGCon logo.
 	self assert: dispositivo connection equals: cuatroGCon
 ]
 
@@ -33,13 +33,27 @@ DispositivoTest >> testConfigurarCRC [
 	| unCRC |
 	unCRC := CRC16_Calculator new.
 	dispositivo configurarCRC: unCRC.
-	self assert: dispositivo CRC equals: unCRC.
+	self assert: dispositivo crc equals: unCRC.
+	self assert: (unCRC crcFor: 'unMensaje') equals: 57093.
 	unCRC := CRC32_Calculator new.
 	dispositivo configurarCRC: unCRC.
-	self assert: dispositivo CRC equals: unCRC.
+	self assert: dispositivo crc equals: unCRC.
+	self assert: (unCRC crcFor: 'unMensaje') equals: 1357831006.
 ]
 
 { #category : #tests }
 DispositivoTest >> testSend [
-	
+	| unCRC wifiCon cuatroGCon |
+	unCRC := CRC16_Calculator new.
+	dispositivo configurarCRC: unCRC.
+	wifiCon := WifiConn new.
+	dispositivo conectarCon: wifiCon.
+	self
+		assert: (dispositivo send: 'unMensaje')
+		equals: ' Datos enviados por wifi '.
+	cuatroGCon := Adapter4GConnection new.
+	dispositivo conectarCon: cuatroGCon.
+	self
+		assert: (dispositivo send: 'unMensaje')
+		equals: ' Datos enviados por 4G  '
 ]

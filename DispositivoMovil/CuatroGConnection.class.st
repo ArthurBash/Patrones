@@ -14,7 +14,7 @@ CuatroGConnection >> connect [
 
 { #category : #initialization }
 CuatroGConnection >> initialize [
-	symb := ' 4G'
+	symb := '4G'
 ]
 
 { #category : #'as yet unclassified' }

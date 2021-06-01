@@ -7,6 +7,11 @@ Class {
 	#category : #DispositivoMovil
 }
 
+{ #category : #'as yet unclassified' }
+Adapter4GConnection class >> logo [
+	self shouldBeImplemented.
+]
+
 { #category : #ssl }
 Adapter4GConnection >> connect [
 	^ self cuatroGConnect connect
@@ -17,11 +22,6 @@ Adapter4GConnection >> cuatroGConnect [
 	^ cuatroGConnect 
 ]
 
-{ #category : #'as yet unclassified' }
-Adapter4GConnection >> devolverSimbolo [
- 	^ self cuatroGConnect devolverSimbolo 
-]
-
 { #category : #initialization }
 Adapter4GConnection >> initialize [
 	cuatroGConnect := CuatroGConnection new.
@@ -29,7 +29,8 @@ Adapter4GConnection >> initialize [
 
 { #category : #'as yet unclassified' }
 Adapter4GConnection >> logo [
-	^ cuatroGConnect logo
+	^ self cuatroGConnect logo
+
 ]
 
 { #category : #'as yet unclassified' }
