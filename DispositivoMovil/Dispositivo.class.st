@@ -13,10 +13,10 @@ Class {
 { #category : #accessing }
 Dispositivo >> conectarCon: unaConexion [
 	| showBan |
+	showBan := unaConexion pict.
 	self display
-		showBanner: 'Dispositivo: Conectando por ' , unaConexion connect.
+		showBanner: 'Dispositivo: Conectando por ' , showBan.
 	connection := unaConexion.
-	showBan := unaConexion logo.
 	self display showBanner: 'Simbolo: ' , showBan.
 	self ringer ring.
 	^ showBan

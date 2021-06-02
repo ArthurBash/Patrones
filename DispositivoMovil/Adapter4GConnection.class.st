@@ -12,11 +12,6 @@ Adapter4GConnection class >> logo [
 	self shouldBeImplemented.
 ]
 
-{ #category : #ssl }
-Adapter4GConnection >> connect [
-	^ self cuatroGConnect connect
-]
-
 { #category : #accessing }
 Adapter4GConnection >> cuatroGConnect [
 	^ cuatroGConnect 
@@ -28,9 +23,8 @@ Adapter4GConnection >> initialize [
 ]
 
 { #category : #'as yet unclassified' }
-Adapter4GConnection >> logo [
-	^ self cuatroGConnect logo
-
+Adapter4GConnection >> pict [ 
+	^ self cuatroGConnect symb 
 ]
 
 { #category : #'as yet unclassified' }

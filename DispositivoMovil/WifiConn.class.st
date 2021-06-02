@@ -7,22 +7,18 @@ Class {
 	#category : #DispositivoMovil
 }
 
-{ #category : #ssl }
-WifiConn >> connect [
-	^ self logo
-]
-
 { #category : #initialization }
 WifiConn >> initialize [
 	pict := 'WiFi'
 ]
 
 { #category : #'as yet unclassified' }
-WifiConn >> logo [
+WifiConn >> pict [
 	^ pict
 ]
 
 { #category : #'as yet unclassified' }
 WifiConn >> sendData: data crc: crc [
-	^ ' Datos enviados por wifi '
+	Transcript show: ' Datos enviados por wifi '.
+	^ self pict
 ]
