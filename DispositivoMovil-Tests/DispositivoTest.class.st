@@ -41,7 +41,7 @@ DispositivoTest >> testConfigurarCRC [
 
 { #category : #tests }
 DispositivoTest >> testSend [
-	"Pruebo el test de send con la conexión ya que no podemos cambiar la el metodo send de la clase Dispositivo, más alla de eso simulamos el ''pasamanos'', probamos con un solo CRC ya que nos pareció indistinto sobre cual se probaba "
+	"Pruebo el test de send con la conexión ya que no podemos cambiar la el metodo, más alla de eso simulamos el ''pasamanos'', probamos con un solo CRC ya que nos pareció indistinto sobre cual se probaba"
 
 	| unCRC wifiCon cuatroGCon |
 	unCRC := CRC16_Calculator new.
