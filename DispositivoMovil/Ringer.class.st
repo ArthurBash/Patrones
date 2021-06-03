@@ -6,6 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 Ringer >> ring [
-	Transcript show:'ring ring'; cr.
-	
+	Transcript
+		show: 'Ringer: ring ring';
+		cr
 ]

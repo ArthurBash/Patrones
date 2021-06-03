@@ -19,6 +19,12 @@ WifiConn >> pict [
 
 { #category : #'as yet unclassified' }
 WifiConn >> sendData: data crc: crc [
-	Transcript show: ' Datos enviados por wifi '.
-	^ self pict
+		"Creamos una variable temporal para guardar el texto, imprimirlo y luego devolverlo para compararlo en el test"
+
+	| texto |
+	texto := 'Conexión: Datos enviados por WiFi'.
+	Transcript
+		show: texto;
+		cr.
+	^ texto
 ]

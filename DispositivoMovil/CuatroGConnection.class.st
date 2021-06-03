@@ -19,6 +19,12 @@ CuatroGConnection >> symb [
 
 { #category : #'as yet unclassified' }
 CuatroGConnection >> transmit: data crc: crc [
-	Transcript show: ' Datos enviados por 4G  '.
-	^ self symb
+	"Creamos una variable temporal para guardar el texto, imprimirlo y luego devolverlo para compararlo en el test"
+
+	| texto |
+	texto := 'Conexión: Datos enviados por 4G'.
+	Transcript
+		show: texto;
+		cr.
+	^ texto
 ]

@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'connection',
-		'crsCalculator',
+		'crcCalculator',
 		'ringer',
 		'display'
 	],
@@ -14,8 +14,7 @@ Class {
 Dispositivo >> conectarCon: unaConexion [
 	| showBan |
 	showBan := unaConexion pict.
-	self display
-		showBanner: 'Dispositivo: Conectando por ' , showBan.
+	Transcript show: 'Dispositivo: Conectando por ' , showBan;cr.
 	connection := unaConexion.
 	self display showBanner: 'Simbolo: ' , showBan.
 	self ringer ring.
@@ -24,9 +23,9 @@ Dispositivo >> conectarCon: unaConexion [
 
 { #category : #'as yet unclassified' }
 Dispositivo >> configurarCRC: unCRCcalculator [
-	self display showBanner: 'Configurando CRC'.
-	crsCalculator := unCRCcalculator. self display
-		showBanner: 'CRC configurado'
+	Transcript show: 'Dispositivo: Configurando CRC'; cr.
+	crcCalculator := unCRCcalculator.
+	Transcript show: 'Dispositivo: Nuevo CRC configurado'; cr. 
 ]
 
 { #category : #accessing }
@@ -36,7 +35,7 @@ Dispositivo >> connection [
 
 { #category : #'as yet unclassified' }
 Dispositivo >> crc [
-	^ crsCalculator
+	^ crcCalculator
 ]
 
 { #category : #accessing }
@@ -48,7 +47,7 @@ Dispositivo >> display [
 Dispositivo >> initialize [
 	ringer := Ringer new.
 	display := DisplayDispositivo new.
-	
+	crcCalculator := CRC16_Calculator new.
 ]
 
 { #category : #accessing }
@@ -58,11 +57,7 @@ Dispositivo >> ringer [
 
 { #category : #commands }
 Dispositivo >> send: datos [
-	| crc mostrar |
-	self display showBanner: 'Calculando la redundancia de ' , datos.
-	crc := crsCalculator crcFor: datos.
-	self display showBanner: 'Datos asegurados, enviando .....'.
-	mostrar:=self connection sendData: datos crc: crc.
-	self display showBanner: (mostrar).
-	^mostrar
+	| crc |
+	crc := crcCalculator crcFor: datos.
+	self connection sendData: datos crc: crc
 ]

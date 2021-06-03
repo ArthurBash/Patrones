@@ -12,6 +12,6 @@ DisplayDispositivo >> initialize [
 { #category : #'as yet unclassified' }
 DisplayDispositivo >> showBanner: img [
 	Transcript
-		show: img ;
+		show: 'Display: ', img;
 		cr
 ]
